@@ -1,0 +1,104 @@
+<div class="container-scroller">
+      
+  <!-- partial:partials/_navbar.html -->
+  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+      <a class="navbar-brand brand-logo" routerLink=""><img src="assets/images/logo.svg" alt="logo" style="width: 200px;height:112px;"/></a>
+      <a class="navbar-brand brand-logo-mini" ><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+        <span class="mdi mdi-menu"></span>
+      </button>
+      <div class="search-field d-none d-md-block">
+        <form class="d-flex align-items-center h-100" action="#">
+          <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+            </div>
+            
+          </div>
+        </form>
+      </div>
+     
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item dropdown"*ngIf="role == 'admin' ? false:true">
+          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+            <i class="mdi mdi-bell-outline" ></i>
+            <div *ngFor="let produit of produits.slice(0,1)">
+            <span class="count-symbol bg-danger" *ngIf="produit.quantite<5"></span>
+          </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            <h6 class="p-3 mb-0" >Produits presque fins de stock</h6>
+            <div class="dropdown-divider"></div>
+          <div *ngFor="let prod of produits">
+            <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div>
+                  <img src="{{srcImageProduit+prod.image}}" class="me-2" alt="image">
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">{{prod.libelle}}</h6>
+                <p class="text-gray ellipsis mb-0">stock:{{prod.quantite}} </p>
+              </div>
+            </a>
+          </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div>
+            
+            <div class="dropdown-divider"></div>
+           
+          </div>
+        </li>
+        <li class="nav-item nav-profile dropdown">
+          <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="nav-profile-img">
+              <img src="{{srcImageFournisseur+fournisseur.image}}" alt="image">
+              <span class="availability-status online"></span>
+            </div>
+            <div class="nav-profile-text">
+              <p class="mb-1 text-black">{{fournisseur.nom}} {{fournisseur.prenom}}</p>
+            </div>
+          </a>
+          <div class="dropdown-menu navbar-dropdown">
+            <a class="dropdown-item" routerLink="/profil/{{fournisseur.id}}" *ngIf="role == 'admin' ? false:true">
+              <i class="mdi mdi-cached me-2 text-success" *ngIf="role == 'admin' ? false:true"></i> Profil </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">
+              <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+          </div>
+        </li>
+        
+    
+      </ul>
+      <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <app-sidebar></app-sidebar>
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+      <!-- <div class="content-wrapper">
+        <div class="page-header">
+         
+        </div>
+        
+      </div> -->
+
+      <router-outlet></router-outlet>
+
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <app-footer></app-footer>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>

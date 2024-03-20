@@ -1,0 +1,52 @@
+
+<div class="page-header">
+    <h3 class="page-title"> fournisseur</h3>
+  </div>
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card"style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+     <div class="card-body">
+       
+       <h4 class="card-title"style="text-align: center;">Liste fournisseur no Act</h4>
+       <div class="table-responsive">
+         <table class="table" style="text-align: center;">
+           <thead>
+             <tr>
+              <th> id </th>
+              <th> image </th>
+              <th> nom</th>
+              <th> prenom </th>
+              <th> mail </th>
+              <th> numtel </th>
+              <th>compagnie</th>
+              <th> Action </th>
+             </tr>
+           </thead>
+           <tbody>
+            <tr *ngFor="let fournisseur of fournisseurs | paginate: { itemsPerPage: 10, currentPage: p}">
+              <td>{{fournisseur.id}}</td>
+               <td >
+                 <img src="{{srcImageUser+fournisseur.image}}" class="me-2" alt="image">
+                   
+               </td>
+                  <td>{{fournisseur.nom}}</td>
+                  <td>{{fournisseur.prenom}}</td>
+                  <td>{{fournisseur.mail}}</td>
+                  <td>{{fournisseur.numtel}}</td>
+                  <td>{{fournisseur.compagnie}}</td>
+                  <td>
+                      <label class="badge badge-info"(click)="updateFournisseur(fournisseur)">accept</label>
+                      <label class="badge badge-warning"(click)="deleteFournisseur(fournisseur.id)">Delete</label>                 
+                    </td>   
+             </tr>
+           </tbody>
+         </table>
+         <pagination-controls
+         previousLabel="Precedent"
+                           nextLabel="Suivant"
+                            (pageChange)="p = $event"></pagination-controls>
+       </div>
+     </div>
+   </div>
+      </div>
+

@@ -1,0 +1,107 @@
+
+            
+          
+            
+        <div class="breadcrumbs">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="breadcrumbs-content">
+                        <h1 class="page-title">Panier</h1>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-nav">
+                        <li><a routerLink="/produit"><i class="lni lni-home"></i> Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+            <div class="shopping-cart section" style="top: -70px;">
+            <div class="container">
+            <div class="cart-list-head">
+            
+            <div class="cart-list-title">
+            <div class="row">
+            <div class="col-lg-1 col-md-1 col-12">
+            </div>
+            <div class="col-lg-2 col-md-3 col-12">
+            <p>Produit</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+            <p>Nom</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+            <p>Prix</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+            <p>Quantite</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+                <p>Total</p>
+                </div>
+            <div class="col-lg-1 col-md-2 col-12">
+            <p>Remove</p>
+            </div>
+            </div>
+            </div>
+            
+            
+            <div class="cart-single-list"*ngFor="let prod of produit">
+            <div class="row align-items-center">
+            <div class="col-lg-1 col-md-1 col-12">
+            <a ><img src="{{srcImageProduit+prod.image}}" alt="#"></a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-12">
+            <h5 class="product-name"><a >
+           {{prod.description}}</a></h5>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+                
+               {{prod.libelle}}
+                </div>
+            <div class="col-lg-2 col-md-2 col-12">
+           {{ prod.prix}}
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+                <input (click)="eventOnChange($event)"   type="number"  min="1" max="{{prod.quantite}}" id="{{prod.id}}" value="{{prod.quantite_commande}}" name="quantity" >
+            </div>
+            <div class="col-lg-2 col-md-2 col-12">
+            <p>{{prod.prix * prod.quantite_commande}}</p>
+            </div>
+            <div class="col-lg-1 col-md-2 col-12">
+            <a class="remove-item" href="javascript:void(0)"  (click)="deletepanier(prod.id)"><i class="lni lni-close"></i></a>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-12">
+            
+            <div class="total-amount">
+            <div class="row">
+            <div class="col-lg-8 col-md-6 col-12">
+            <div class="left">
+            </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+            <div class="right">
+            <ul>
+            <li>Prix Panier<span>{{totalPrice}}dt</span></li>
+            
+            </ul>
+            <div class="button">
+            <a (click)="checkout()" class="btn">Checkout</a>
+            <a routerLink="/produit" class="btn btn-alt">Continue shopping</a>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+            </div>
+            </div>
+            </div>

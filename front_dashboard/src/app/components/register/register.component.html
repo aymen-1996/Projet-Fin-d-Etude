@@ -1,0 +1,95 @@
+<div class="container-scroller" >
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth">
+        <div class="row flex-grow">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left p-5">
+              
+              
+              <div class="brand-logo">
+                <img src="../../assets/images/register.png"style="width: 240px;height:170px;">
+              </div>
+              <div  *ngIf="alert" class="alert alert-success  fade show" role="alert">
+                <strong></strong> compte creer! en attente l'acceptation par l'administrateur de site
+                <a (click) ="closeAlert()" type="button" class="close" data-dismiss="alert" >
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+              <h4>New here?</h4>
+              <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+              <form [formGroup]="formFournisseur" (ngSubmit)="addFournisseur()">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="nom" placeholder="nom">
+                  <div *ngIf="formFournisseur.controls['nom'].invalid && (formFournisseur.controls['nom'].dirty&& submitted || formFournisseur.controls['nom'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formFournisseur.controls['nom'].errors && submitted">
+                      Le nom doit comporter au moins 4 caractères
+                    
+                  </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="prenom"placeholder="prenom">
+                  <div *ngIf="formFournisseur.controls['prenom'].invalid && (formFournisseur.controls['prenom'].dirty&& submitted || formFournisseur.controls['prenom'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formFournisseur.controls['prenom'].errors && submitted">
+                      Le prenom doit comporter au moins 4 caractères.
+                    
+                  </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="mail"placeholder="mail">
+                  <div *ngIf="formFournisseur.controls['mail'].invalid && (formFournisseur.controls['mail'].dirty&& submitted || formFournisseur.controls['mail'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formFournisseur.controls['mail'].errors && submitted">
+                    Mail invalide!
+                    
+                  </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                 <!--<select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                    <option>Country</option>
+                    <option>United States of America</option>
+                    <option>United Kingdom</option>
+                    <option>India</option>
+                    <option>Germany</option>
+                    <option>Argentina</option>
+                  </select>-->
+                </div>
+                <input class="form-control" formControlName="image" type="file" name="file" (change)="handleFileInput($event)">
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="numtel" placeholder="numero de tel">
+                  <div *ngIf="formFournisseur.controls['numtel'].invalid && (formFournisseur.controls['numtel'].dirty&& submitted || formFournisseur.controls['numtel'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formFournisseur.controls['numtel'].errors && submitted">
+                      Le numero de telphone doit comporter 8 nombres.
+                    
+                  </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="compagnie" placeholder="compagnie">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" formControlName="password"placeholder="Password">
+                  <div *ngIf="formFournisseur.controls['compagnie'].invalid && (formFournisseur.controls['compagnie'].dirty&& submitted || formFournisseur.controls['compagnie'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formFournisseur.controls['compagnie'].errors && submitted">
+                    password doit comporter au moin 6 caractères.
+                    
+                  </div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                </div>
+                <div class="mt-3">
+                  <a type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"  (click)="addFournisseur()">SIGN UP</a>
+                </div>
+                <div class="text-center mt-4 font-weight-light"> Already have an account? <a routerLink="/login" class="text-primary">Login</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>

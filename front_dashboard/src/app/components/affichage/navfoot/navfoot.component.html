@@ -1,0 +1,42 @@
+<div class="page-header">
+    <h3 class="page-title"> NavFoot</h3>
+  </div>
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+      <div class="card-body">
+        
+        <h4 class="card-title" style="text-align: center;">navfoot</h4>
+        <div class="table-responsive">
+          <table class="table" style="text-align: center; ">
+            <thead>
+              <tr>
+                <th> id </th>
+                <th>date debut </th>
+                <th> date fin </th>
+                <th>coleur</th>
+                <th>numtel</th>
+                <th> date weekenddebut </th>
+                <th> date weekendfin </th>
+                <th> Action </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td> {{nav.id}} </td>
+                <td>{{nav.semainedebut}}</td>
+                <td>{{nav.semainefin}}</td>
+                <td>{{nav.color}}</td>
+                <td>{{nav.numtel}}</td>
+                <td>{{nav.weekenddebut}}</td>
+                <td>{{nav.weekendfin}}</td>
+              <td><label class="badge badge-gradient-success" routerLink="/updatenavfoot/{{nav.id}}">Update</label></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>

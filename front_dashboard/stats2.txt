@@ -1,0 +1,117 @@
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { StatistiqueService } from 'src/app/services/statistique.service';
+import * as Highcharts from 'highcharts';
+
+@Component({
+  selector: 'app-statfour',
+  templateUrl: './statfour.component.html',
+  styleUrls: ['./statfour.component.css']
+})
+export class StatfourComponent implements OnInit {
+
+  dateArray: any;
+  sommeArray: [] = [];
+  sommeArray1: [] = [];
+  fournisseur:any;
+  test: boolean = false;
+
+
+  commandeParSemaine: any;
+  constructor(private statistiqueService: StatistiqueService, private datePipe: DatePipe) { }
+
+  ngOnInit(): void {
+this.fournisseur = JSON.parse(localStorage.getItem('user') || '{}');
+   
+  }
+
+  
+  Datecmd(event: any) {
+
+    let dateNow = new Date(event.target.value)
+    let startDate = {
+      date: new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() - dateNow.getDay() + 1),
+      dateEnd: new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() - dateNow.getDay() + 8)
+    }
+
+    this.statistiqueService.Datecmd(startDate).subscribe(
+      (res: any) => {
+        console.log("add :", res);
+        this.commandeParSemaine = res;
+
+        let obgSomme: [] = [];
+        let obgSomme1: [] = [];
+
+        let objDate = [];
+        dateNow.setDate(startDate.date.getDate() - 1)
+
+        for (var i = 0; i < 7; i++) {
+          let dateFormDate = new Date(dateNow.setDate(dateNow.getDate() + 1))
+          let dateCase = this.datePipe.transform(dateFormDate, 'yyyy-MM-dd').toString()
+          obgSomme[dateCase] = 0;
+          obgSomme1[dateCase] = 0;
+
+          objDate.push(dateCase);
+          this.commandeParSemaine.forEach(item => {
+            let date1 = new Date(item.commande.date);
+            let date2 = new Date(dateFormDate)
+            if (date1.getTime() == date2.getTime() && item.article.fournisseur.id == this.fournisseur.id) {              
+              obgSomme[dateCase] = obgSomme[dateCase] + item.quantite_commande * item.article.prix
+            }
+            
+          });
+        }
+
+        console.log("here table of date : ", objDate);
+        console.log('table is ', obgSomme);
+        this.sommeArray = []
+        objDate.forEach(element => {
+          this.sommeArray.push(obgSomme[element]);
+        });
+        this.dateArray = objDate;
+        let options: any = {
+          Chart: {
+            type: 'column',
+            height: 700
+          },
+          title: {
+            text: this.fournisseur.prenom  +  this.fournisseur.nom
+          },
+          credits: {
+            enabled: false
+          },
+          xAxis: {
+            categories: objDate,
+            tickmarkPlacement: 'on',
+            title: {
+              enabled: false
+            }
+          },
+          series: [{
+            name: 'Mes ventes',
+            data: this.sommeArray
+          },
+          ],
+          colors: [ '	rgb(238,130,238)'],
+        
+            tooltip: {
+                backgroundColor: '#FCFFC5'
+            }
+        }
+
+        this.test = true
+        setTimeout(() => {
+          Highcharts.chart('container', options)
+        }, 10)
+
+      })
+
+   
+
+
+
+
+
+  }
+
+}

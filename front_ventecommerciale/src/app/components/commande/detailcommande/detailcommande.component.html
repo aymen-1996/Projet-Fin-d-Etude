@@ -1,0 +1,34 @@
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Shopping Summery -->
+                <h4 class="card-title" style="text-align: center;"> Detail commande</h4>
+                <table class="table shopping-summery">
+                    <thead>
+                        <tr>
+                            <th> produit </th>
+                            <th>image</th>
+                            <th> quantite_commande </th>
+                            <th>prix totlal</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let cmd of commandes">
+                        <tr>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-des">{{cmd.article.libelle}}</p>
+                            </td>
+                            <td class="image" data-title="No"><img src="{{srcImageProduit+cmd.article.image}}" alt="#"
+                                    style="height: 50px;"></td>
+                            <td class="price" data-title="quantite_total"><span>{{cmd.quantite_commande}} </span></td>
+                            <td class="price" data-title="prix"><span>{{cmd.quantite_commande*cmd.article.prix}} dt
+                                </span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <p *ngFor="let cmd of commandes.slice(0,1)"style="text-align: end;">prix commande : {{cmd.commande.prix_total}} dt</p>
+                <!--/ End Shopping Summery -->
+            </div>
+        </div>

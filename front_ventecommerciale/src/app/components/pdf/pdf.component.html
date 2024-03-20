@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="row"id="htmlData">
+    <div class="col-lg-8 col-md-8 col-12" >
+    <div class="contact-form-head">
+<div class="form-main">
+    <form class="form" method="post" action="assets/mail/mail.php"style="height: 350px;">
+    <div class="row">
+        <h6 style="text-align: end;">date de commande: {{commande.date|date}}</h6><br>
+        <br><br>
+    <h6>*Nom Client:<br> <p>{{client.prenom}} {{client.nom}}<br></p></h6>
+    <br><br>
+    <br><h6>*Votre commande:</h6>
+    <div class="col-12" *ngFor="let articl of article">
+        <p>-{{articl.libelle}} x {{articl.quantite_commande}}</p>
+    </div>
+    <br>
+    <h6 style="text-align: end;"> prix total :{{produit.prix_total}}dt</h6>
+    <div class="col-12">
+    
+    </div>
+    </div>
+
+</form>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="form-group button">
+        <button type="submit" class="btn "(click)="openPDF()">Download PDF</button>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+   <!-- <div class="shopping-cart section">
+        <div class="container">
+            <div class="row"id="htmlData">
+                <div class="col-12">
+                    <!-- Shopping Summery -->
+                   <!-- <h6>date de commande: {{commande.date}}</h6>
+                    <h5 class="card-title" style="text-align: center;">Nom Client: {{client.prenom}} {{client.nom}}</h5>
+                    <table class="table shopping-summery">
+                        <thead>
+                             <tr class="main-hading">
+                                <th>PRODUCT</th>
+                                <th>NAME</th>
+                                <th class="text-center">prix</th>
+                                <th class="text-center">QUANTITY</th>
+                                <th class="text-center">TOTAL</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prod of produit">
+                                <td class="image" data-title="No"><img src="{{srcImageProduit+prod.image}}" alt="#"></td>
+                                <td class="price" data-title="Description">
+                                    <p class="product-name"><a href="#">{{prod.libelle}}</a></p>
+                                </td>
+                                <td class="price" data-title="Price"><span>{{prod.prix}}dt </span></td>
+                                <td class="qty" data-title="Qty"><!-- Input Order -->
+                                    <!-- <div >
+                                            <input   type="number"  min="1" max="{{prod.quantite}}" id="{{prod.id}}" value="{{prod.quantite_commande}}" name="quantity" >
+                                        </div>
+                                    <!--/ End Input Order -->
+                               <!-- </td>
+                                <td class="total-amount" data-title="Total"><span>{{prod.prix * prod.quantite_commande}}</span></td>
+                            </tr>
+                    
+                        </tbody>
+                    </table>
+                    <div class="col-lg-4 col-md-7 col-12">
+                        <div class="left">
+                        
+                            <ul >
+                               <h6><li>Cart Subtotal: <span>{{totalPrice}}dt</span></li></h6> 
+                            </ul>
+                        </div>
+                      
+                    </div>
+                    <!--/ End Shopping Summery -->
+               <!-- </div>
+            </div>
+            <div class="total-amount">
+                <div class="row">
+                    <div class="col-lg-8 col-md-5 col-12">
+                    </div>
+                    <div class="col-lg-4 col-md-7 col-12">
+                        <div class="right">
+                            <div class="button5">
+                                <button class="btn btn-success btn-block" style="background-color: #0d6efd;;"   (click)="openPDF()">Download PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    

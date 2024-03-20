@@ -1,0 +1,35 @@
+<div class="page-header">
+    <h3 class="page-title"> Commande</h3>
+  </div>
+    <div class="row">
+      <div class="col-lg-10 grid-margin stretch-card">
+        <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+      <div class="card-body">
+        <div class="form-group">
+        </div>
+        <h4 class="card-title" style="text-align: center;">Detail commande</h4>
+        <div class="table-responsive">
+          <table class="table" style="text-align: center; ">
+            <thead>
+              <tr>
+                    <th> produit </th>
+                    <th>image</th>
+                    <th>prix produit</th>
+                    <th> quantite_commande </th>
+                   
+                </tr>
+              
+            </thead>
+            <tbody>
+              <tr *ngFor="let comd of commandes">
+                <td> {{comd.article.libelle }} </td>
+                <img  style="height: 50px;" src="{{srcImageProduit+comd.article.image}}" class="me-2" alt="image">
+                <td> {{comd.article.prix }} </td>
+                <td>{{comd.quantite_commande}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+      </div>
+    </div>

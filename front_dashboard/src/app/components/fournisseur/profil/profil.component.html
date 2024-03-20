@@ -1,0 +1,79 @@
+
+
+<form [formGroup]="formFournisseur" (ngSubmit)="updateFournisseur()">
+    <div class="row">
+      
+    <div class="col-md-3" >
+      
+        <h4 class="card-title1"></h4>
+        
+        <div class="card1" style="width: 18rem; margin-top: 100px;">
+         <img class="card-img-top" src="{{srcImageFournisseur}}" alt="image">
+                                                      
+         <h5 class="card-title1">{{fournisseur.nom}}</h5>
+         <h5 class="card-title1">{{fournisseur.prenom}}</h5>
+         <h5 class="card-title1">tel:{{fournisseur.numtel}}</h5>
+         <button type="button1" class="btn1 btn-gradient-warning btn-fw" (click)="update()" *ngIf="!hidden" >Update</button>
+         
+    </div>
+    </div>
+    <div class="col-md-4"*ngIf="hidden" >
+    <div class="card"style="left: 40px;box-shadow: 0 5px 10px rgba(0,0,0,.2);border-radius: 2em;">
+      <div class="card-body"> 
+        <div class="form-group">
+          <div  *ngIf="alert" class="alert alert-success  fade show" role="alert">
+            <strong></strong> Success update
+            <a (click) ="closeAlert()" type="button" class="close" data-dismiss="alert" >
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <label class="form-label" for="form3Example1c" >nom</label>
+            <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="nom" placeholder="nom">
+            
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form3Example1c" >prenom</label>
+            <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="prenom"placeholder="prenom">
+            
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form3Example1c" >mail</label>
+            <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="mail"placeholder="mail">
+            <div *ngIf="formFournisseur.controls['mail'].invalid && (formFournisseur.controls['mail'].dirty&& submitted || formFournisseur.controls['mail'].touched&& submitted)" class="alert alert-danger">
+              <div *ngIf="formFournisseur.controls['mail'].errors && submitted">
+              Mail invalide!
+              
+            </div>
+            </div>
+          </div>
+          <div class="form-group">
+           <!--<select class="form-control form-control-lg" id="exampleFormControlSelect2">
+              <option>Country</option>
+              <option>United States of America</option>
+              <option>United Kingdom</option>
+              <option>India</option>
+              <option>Germany</option>
+              <option>Argentina</option>
+            </select>-->
+            <label class="form-label" for="form3Example1c" >numtel</label>
+            <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="numtel" placeholder="numero de tel">
+            
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="form3Example1c" >compagnie</label>
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="compagnie" placeholder="compagnie">
+                </div>
+          <div class="form-group">
+            <label class="form-label" for="form3Example1c" >password</label>
+            <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" formControlName="password" placeholder="Password">
+          </div>
+         
+          <div class="mt-3">
+            <button ype="submit" class="btn btn-gradient-warning btn-fw"(click)="updateFournisseur()"> Update <i class="mdi mdi-file-check btn-icon-append"></i>
+            </button>
+          </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </form>

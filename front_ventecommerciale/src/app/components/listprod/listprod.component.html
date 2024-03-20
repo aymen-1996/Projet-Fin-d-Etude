@@ -1,0 +1,40 @@
+<div  class="row">
+    <div *ngFor="let produit of produits | recherhe: term | paginate: { itemsPerPage: 8, currentPage: p}" class="col-lg-3 col-md-6 col-12">
+       
+        
+            <!-- Start Single Product -->
+        <div   class="single-product"style="height: 480px;">
+            <div class="product-image" style="height:300px">
+                
+                <img src="{{srcImageProduit+produit.image}}" alt="#">
+                <div class="button">
+                    <a  class="btn" (click)="addTocart(produit )" ><i class="lni lni-cart"></i>Ajout Panier</a>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="category"></span>
+                <h4 class="title">
+                    <a >{{produit.libelle}}</a>
+                </h4>
+                <ul class="review">
+                    <li><span><span class="category">stock:{{produit.quantite}}</span></span></li>
+                </ul>
+                <div class="price">
+                    <span>{{produit.prix}}dt</span>
+                </div>
+                <div class="button">
+                    <a  class="btn" routerLink="/detailproduit/{{produit.id}}">View Details</a>
+                    <input  (change)="eventOnChange($event)" type="number" step="1" min="1" max="{{produit.quantite}}" value="1" name="quantity" class="quantity-field" style="width:60px ;">
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <pagination-controls
+    previousLabel="Precedent"
+                      nextLabel="Suivant"
+                       (pageChange)="p = $event"></pagination-controls>
+        <!-- End Single Product -->
+   

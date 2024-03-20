@@ -1,0 +1,52 @@
+
+<div class="page-header">
+<h3 class="page-title"> Categories</h3>
+</div>
+<div class="col-lg-9 mx-auto">
+
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+  <div class="card"style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+   <div class="card-body" >
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Search..."
+    [(ngModel)]="term"
+  />
+</div>
+     <h4 class="card-title"style="text-align:center;">Liste categorie</h4>
+     <div class="table-responsive">
+       <table class="table"style="align:center;" >
+         <thead>
+           <tr>
+            <th> id </th>
+            <th> libelle</th>
+            <th> description </th>
+            <th> Action </th>
+           </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let categorie of categories | paginate: { itemsPerPage: 8, currentPage: p}| recherche: term">
+            <td>{{categorie.id}}</td>
+                <td>{{categorie.libelle}}</td>
+                <td>{{categorie.description}}</td>
+                <td>
+                    <label class="badge badge-gradient-danger"(click)="deleteCategorie(categorie.id)">Delete</label>
+                    <label class="badge badge-gradient-success"  routerLink="/updatecategorie/{{categorie.id}}">Update</label>
+                  </td>   
+           </tr>
+         </tbody>
+       </table>
+       <pagination-controls
+    previousLabel="Precedent"
+                      nextLabel="Suivant"
+                       (pageChange)="p = $event"></pagination-controls>
+     </div>
+   </div>
+ </div>
+</div>
+  </div> 
+</div>
+

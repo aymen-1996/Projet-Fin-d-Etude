@@ -1,0 +1,70 @@
+
+    <div class="page-header">
+      <h3 class="page-title"> Produits</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6" >
+     <div class="col-lg-10 grid-margin stretch-card">
+      <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2); left:50%;">
+    <div class="card-body">
+      <h4 class="card-title" style="text-align: center;">Ajouter produit</h4>
+              <form [formGroup]="formProduit" (ngSubmit)="addProduit()">
+                
+                    
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="libelle" placeholder="libelle">
+                  <div *ngIf="formProduit.controls['libelle'].invalid && (formProduit.controls['libelle'].dirty&& submitted || formProduit.controls['libelle'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formProduit.controls['libelle'].errors && submitted">
+                      Le libelle doit comporter au moins 4 caractères.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="description"placeholder="description">
+                  <div *ngIf="formProduit.controls['description'].invalid && (formProduit.controls['description'].dirty&& submitted || formProduit.controls['description'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formProduit.controls['description'].errors && submitted">
+                      La description doit comporter au moins 6 caractères.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="quantite"placeholder="quantite">
+                  <div *ngIf="formProduit.controls['quantite'].invalid && (formProduit.controls['quantite'].dirty&& submitted || formProduit.controls['quantite'].touched&& submitted)" class="alert alert-danger">
+                    <div *ngIf="formProduit.controls['quantite'].errors && submitted">
+                      champ vide
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                <div>
+                 <select class="form-control form-control-lg" id="exampleFormControlSelect2" formControlName="categorie"  >
+                    <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.libelle}}</option>
+                  </select>
+                  <div>
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div>
+                  <select class="form-control form-control-lg" id="exampleFormControlSelect2" formControlName="fournisseur" >
+                    <option  [value]="fournisseur.id">{{fournisseur.nom}}</option>
+                  </select>
+                </div>
+                </div>
+                <input class="form-control" formControlName="image" type="file" name="file" (change)="handleFileInput($event)">
+                <div class="form-group">
+                  <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="prix" placeholder="prix">
+                </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn"(click)="addProduit()">add Produit</button>
+                </div>
+                 
+              </form>
+            </div>
+          </div>
+        </div>
+   </div>
+    </div>
+    
+      <!-- content-wrapper ends -->
+   

@@ -1,0 +1,51 @@
+
+<div class="page-header">
+  <h3 class="page-title"> Users</h3>
+</div>
+  <div class="row">
+    <div class="col-lg-11 grid-margin stretch-card">
+      <div class="card"style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+   <div class="card-body">
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Search..."
+    [(ngModel)]="term"
+  />
+     <h4 class="card-title"style="text-align: center;">Liste user</h4>
+     <div class="table-responsive">
+       <table class="table" style="text-align: center;">
+         <thead>
+           <tr>
+            <th> id </th>
+            <th> image </th>
+            <th> nom</th>
+            <th> prenom </th>
+            <th> mail </th>
+            <th> numtel </th>
+            <th> Action </th>
+           </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p}| search: term">
+            <td>{{user.id}}</td>
+             <td >
+               <img src="{{srcImageUser+user.image}}" class="me-2" alt="image">
+                 
+             </td>
+                <td>{{user.nom}}</td>
+                <td>{{user.prenom}}</td>
+                <td>{{user.mail}}</td>
+                <td>{{user.numtel}}</td>
+                <td>
+                    <label class="badge badge-gradient-danger"(click)="deleteUser(user.id)">Delete</label>
+                    <label class="badge badge-gradient-success"routerLink="/detailuser/{{user.id}}">Detail</label>
+                  </td>   
+           </tr>
+         </tbody>
+       </table>
+       <pagination-controls (pageChange)="p = $event"></pagination-controls>
+     </div>
+   </div>
+ </div>
+    </div>

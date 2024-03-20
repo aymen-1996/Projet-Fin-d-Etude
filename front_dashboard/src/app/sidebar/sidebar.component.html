@@ -1,0 +1,100 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <a href="#" class="nav-link">
+        <div class="nav-profile-image">
+          <img src="{{srcImageFournisseur+fournisseur.image}}" alt="image">
+          <span class="login-status online"></span>
+          <!--change to offline or busy as needed-->
+        </div>
+        <div class="nav-profile-text d-flex flex-column">
+          <span class="font-weight-bold mb-2">{{fournisseur.nom}} {{fournisseur.prenom}}</span>
+          <span class="text-secondary text-small">{{fournisseur.compagnie}}</span>
+        </div>
+        <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" *ngIf="role == 'fournisseur' ? false:true" routerLink="/dashboard"href="index.html">
+        <span class="menu-title">Dashboard</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" *ngIf="role == 'admin' ? false:true">
+        <span class="menu-title">Produit</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-shopping menu-icon"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" routerLink="/listproduit">List Produit</a></li>
+          <li class="nav-item"> <a class="nav-link"routerLink="/addproduit">AddProduit</a></li>
+        </ul>
+      </div>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" routerLink="/listuser"*ngIf="role == 'fournisseur' ? false:true">
+        <span class="menu-title">User</span>
+        <i class="mdi mdi-account-multiple menu-icon"></i>
+      </a>
+    </li> -->
+    <li class="nav-item"*ngIf="role == 'fournisseur' ? false:true">
+      <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Fournisseur</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-account-multiple menu-icon"></i>
+      </a>
+      <div class="collapse" id="general-pages">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" routerLink="/listfournisseur">List FournisseurAct</a></li>
+              <li class="nav-item"> <a class="nav-link"routerLink="/listfournisseurnoact">listfournisseur no active</a></li>
+            </ul>
+      </div>
+    </li>
+    <li class="nav-item"*ngIf="role == 'fournisseur' ? false:true">
+      <a class="nav-link" routerLink="/affichage" >
+        <span class="menu-title">Affichage</span>
+        <i class="mdi mdi-arrange-bring-forward menu-icon"></i>
+      </a>
+    </li>
+        <li class="nav-item"*ngIf="role == 'fournisseur' ? false:true">
+          <a class="nav-link" data-bs-toggle="collapse" href="#general-pages"  aria-expanded="false" aria-controls="general-pages">
+            <span class="menu-title">categorie</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-apps menu-icon"></i>
+          </a>
+          <div class="collapse" id="general-pages">
+              <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="/listcategorie">List Categorie</a></li>
+                  <li class="nav-item"> <a class="nav-link"routerLink="/addcategorie">addCategorie</a></li>
+                </ul>
+          </div>
+        </li>
+        
+    <li class="nav-item"*ngIf="role == 'fournisseur' ? false:true">
+      <a class="nav-link" routerLink="/listcommande">
+        <span class="menu-title">Commandes</span>
+        <i class="mdi mdi-animation menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item"*ngIf="role == 'admin' ? false:true">
+      <a class="nav-link" routerLink="/livraison">
+        <span class="menu-title">Produit livrer</span>
+        <i class="mdi mdi-briefcase-check menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"routerLink="/statfour"*ngIf="role == 'admin' ? false:true">
+        <span class="menu-title">Statistique</span>
+        <i class="mdi mdi-chart-bar menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"routerLink="/navfoot"*ngIf="role == 'fournisseur' ? false:true">
+        <span class="menu-title">navfoot</span>
+        <i class="mdi mdi-arrange-send-backward menu-icon"></i>
+      </a>
+    </li>
+    </ul>
+</nav>

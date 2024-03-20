@@ -1,0 +1,217 @@
+<section class="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 custom-padding-right">
+                <div class="slider-head">
+                    <!-- Start Hero Slider -->
+                    <div class="hero-slider">
+                        <!-- Start Single Slider -->
+                        <!-- <div class="single-slider"
+                            style="background-image: url(assets/images/hero/slider-bg1.jpg);">
+                            <div class="content">
+                                <h2><span>No restocking fee ($35 savings)</span>
+                                    M75 Sport Watch
+                                </h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.</p>
+                                <h3><span>Now Only</span> $320.99</h3>
+                                <div class="button">
+                                    <a href="product-grids.html" class="btn">Shop Now</a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- End Single Slider -->
+                        <!-- Start Single Slider -->
+                        <div class="single-slider" 
+                            style="background-image: url({{srcImageProduit+pub1.image}});"> 
+                            
+                            <div class="content">
+                                <h2><span>Grande Vente Offre</span>
+                                    Obtenez la meilleure offre sur casque GBL
+                                </h2>
+                                <p>La douleur elle-même est l'amour.
+                                    aussi bas que la fatigue et l'obésité.</p>
+                                <h3><span>Combiné uniquement </span> {{pub1.prix}}dt</h3>
+                                <div class="button">
+                                    <a (click)="addTocart(pub1)" class="btn">Achetez maintenant </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Slider -->
+                    </div>
+                    <!-- End Hero Slider -->
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-12 md-custom-padding"  >
+                        <!-- Start Small Banner -->
+                        <div class="hero-small-banner"
+                            style="background-image: url({{srcImageProduit+pub2.image}}); ">
+                            <div class="content">
+                                <h2>
+                                    <span>Nouvelle ligne requise</span>
+                                  {{pub2.libelle}}
+                                </h2>
+                                <h3>{{pub2.prix}}dt</h3>
+                            </div>
+                        </div>
+                        <!-- End Small Banner -->
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-12">
+                        <!-- Start Small Banner -->
+                        <div class="hero-small-banner style2">
+                            <div class="content">
+                                <h2>Meilleure offre</h2>
+                                <p>Meilleure prix cette semaine pour vous</p>
+                                <div class="button">
+                                    <a class="btn" (click)="addTocart(pub2)">Achetez maintenant</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start Small Banner -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- End Hero Area -->
+
+    <!-- Start Trending Product Area -->
+    <section class="trending-product section" style="margin-top: 12px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Nouveau Produit </h2>
+                        <p>Il existe de nombreux produit sur le site nous avons fournis les derniers produits pour faciliter de trouver des produits modernes</p>
+                    </div>
+                </div>
+            </div>
+           
+            <div  class="row">
+                <div *ngFor="let produit of produits" class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Product -->
+                    <div   class="single-product" style="height: 480px;">
+                        <div class="product-image">
+                            
+                            <img src="{{srcImageProduit+produit.image}}" alt="#">
+                            <span class="new-tag">New</span>
+                            <div class="button">
+                                <a (click)="addTocart(produit)" class="btn"><i class="lni lni-cart"></i>Ajout Panier</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="category"></span>
+                            <h4 class="title">
+                                <a href="product-grids.html">{{produit.libelle}}</a>
+                            </h4>
+                            <ul class="review">
+                                <li><span><span class="category">stock:{{produit.quantite}}</span></span></li>
+                            </ul>
+                            <div class="price">
+                                <span>{{produit.prix}}dt</span>
+                            </div>
+                            <div class="button">
+                                <a  class="btn" routerLink="/detailproduit/{{produit.id}}">View Details</a>
+                                <input  (change)="eventOnChange($event)" type="number" step="1" min="1" max="{{produit.quantite}}"  value="1" name="quantity" class="quantity-field" style="width:50px ;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- End Single Product -->
+                </div>
+            
+            </div>
+    </section>
+    <!-- End Trending Product Area -->
+
+    <!-- Start Call Action Area -->
+    <!-- End Call Action Area -->
+
+    <!-- Start Banner Area -->
+    <section class="trending-product section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Produit le plus vente </h2>
+                    </div>
+                </div>
+            </div>
+           
+            <div  class="row">
+                <div *ngFor="let produit of prodasc" class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Product -->
+                    <div   class="single-product" >
+                        <div class="product-image"style="height: 280px;">
+                            <span class="sale-tag">plus vente</span>
+                            <img src="{{srcImageProduit+produit.image}}" alt="#">
+                            <div class="button">
+                                <a (click)="addTocart(produit)" class="btn"><i class="lni lni-cart"></i>Ajout Panier</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="category"></span>
+                            <h4 class="title">
+                                <a href="product-grids.html">{{produit.libelle}}</a>
+                            </h4>
+                            <ul class="review">
+                                <li><span><span class="category">stock:{{produit.quantite}}</span></span></li>
+                            </ul>
+                            <div class="price">
+                                <span>{{produit.prix}}dt</span>
+                            </div>
+                            <div class="button">
+                                <a  class="btn" routerLink="/detailproduit/{{produit.id}}">View Details</a>
+                                <input  (change)="eventOnChange($event)" type="number" step="1" min="1" max="{{produit.quantite}}" value="1" name="quantity" class="quantity-field" style="width:50px ;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- End Single Product -->
+                </div>
+            
+            </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!-- Start Shipping Info -->
+    <section class="shipping-info">
+        <div class="container">
+            <ul>
+                <!-- Free Shipping -->
+                <li>
+                    <div class="media-icon">
+                        <i class="lni lni-delivery"></i>
+                    </div>
+                    <div class="media-body">
+                        <h5>Free Shipping</h5>
+                        <span>On order over $99</span>
+                    </div>
+                </li>
+                <!-- Money Return -->
+                <li>
+                    <div class="media-icon">
+                        <i class="lni lni-support"></i>
+                    </div>
+                    <div class="media-body">
+                        <h5>24/7 Support.</h5>
+                    </div>
+                </li>
+                <!-- Support 24/7 -->
+               
+                <!-- Safe Payment -->
+                <li>
+                    <div class="media-icon">
+                        <i class="lni lni-reload"></i>
+                    </div>
+                    <div class="media-body">
+                        <h5>Easy Return.</h5>
+                        <span>Hassle Free Shopping.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>

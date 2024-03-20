@@ -1,0 +1,55 @@
+<div class="page-header">
+    <h3 class="page-title"> Commande</h3>
+  </div>
+    <div class="row">
+      <div class="col-lg-11 grid-margin stretch-card">
+        <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+      <div class="card-body">
+        <div class="form-group">
+          <input
+        type="text"
+        class="form-control"
+        placeholder="Rechercher..."
+        [(ngModel)]="term"
+      />
+      </div>
+        <div class="form-group">
+        </div>
+        <h4 class="card-title" style="text-align: center;">Liste commande</h4>
+        <div class="table-responsive">
+          <table class="table" style="text-align: center; ">
+            <thead>
+              <tr>
+                <th> date  </th>
+                <th> prix_total</th>
+                <th> quantite_total </th>
+                <th> client </th>
+                <th> num tel client </th>
+                <th>etat commande</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let commande of commandes|cherchedat: term| paginate: { itemsPerPage: 10, currentPage: p}">
+                <td> {{commande.date | date }} </td>
+                <td>{{commande.prix_total}}</td>
+                <td>{{commande.quantite_total}}</td>
+                <td>{{commande.client.nom}}</td>
+                <td>{{commande.client.numtel}}</td>
+                <td>{{commande.etat}}</td>
+                <td> <button type="button" class="badge badge-primary badge-pill" routerLink="/detailcommande/{{commande.id}}">detail</button>
+                  <button type="button" class="badge badge-danger badge-pill" *ngIf="commande.etat!=='livré'" (click)="updateCommande(commande)">etat</button>
+                  <button _ngcontent-who-c70="" type="button" class="badge badge-info badge-rounded badge-pill" tabindex="0" (click)="annulercommande(commande.id)" *ngIf="commande.etat =='encours' ">annuler</button>
+               </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls
+          previousLabel="Precedent"
+                            nextLabel="Suivant"
+                             (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>

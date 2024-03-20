@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h3 class="page-title"> Produits</h3>
+</div>
+  <div class="row">
+    <div class="col-lg-10 grid-margin stretch-card">
+      <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2);">
+    <div class="card-body">
+      
+      <h4 class="card-title" style="text-align: center;">Liste aff</h4>
+      <div class="table-responsive">
+        <table class="table" style="text-align: center; ">
+          <thead>
+            <tr>
+              <th> id </th>
+              <th> id_publication </th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let affichage of aff ">
+              <td> {{affichage.id}} </td>
+             
+              <td>{{affichage.id_publication}}</td>
+            
+              <td>
+                <label class="badge badge-gradient-success" routerLink="/updateaff/{{affichage.id}}">update</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>

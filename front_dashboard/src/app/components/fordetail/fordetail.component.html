@@ -1,0 +1,28 @@
+<app-detailfournisseur></app-detailfournisseur>
+<div class=" col-12 product-item"style="text-align: center;top: -85px;"><h4>Top 3 produits {{fournisseur.nom}} {{fournisseur.prenom}} plus vente</h4></div>
+
+<div class="row product-item-wrapper" >
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12 product-item"*ngFor="let prod of produits.slice(0,3)"style="top: -75px;">
+      <div class="card">
+        <div class="card-body" >
+          <div class="action-holder">
+            <div class="sale-badge bg-gradient-success">Top3</div>
+            <span class="favorite-button"><i class="mdi mdi-heart-outline"></i></span>
+          </div>
+          <div class="product-img-outer">
+            <img class="product_image" src="{{srcImageProduit+prod.image}}" alt="prduct image">
+          </div>
+          <p class="product-title">{{prod.libelle}}</p>
+          <p class="product-price">{{prod.prix}} dt</p>
+          <ul class="product-variation">
+            <li><a >stock:{{prod.quantite}}</a></li>
+          </ul>
+          <p class="product-description">quantité vendue:{{prod.quant}}</p>
+        </div>
+      </div>
+    </div>
+   
+   
+  
+  </div>
+  

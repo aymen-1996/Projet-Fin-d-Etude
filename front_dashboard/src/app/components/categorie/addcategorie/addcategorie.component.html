@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3 class="page-title"> Categories</h3>
+  </div>
+<div class="row">    
+  <div class="col-md-6" >
+ <div class="col-lg-10 grid-margin stretch-card">
+  <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.2); left:50%;">
+<div class="card-body">
+  <h4 class="card-title" style="text-align: center;">Ajouter categorie</h4>
+        
+        <form [formGroup]="formCategorie" (ngSubmit)="addCategorie()">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="libelle" placeholder="libelle">
+            <div *ngIf="formCategorie.controls['libelle'].invalid && (formCategorie.controls['libelle'].dirty&& submitted || formCategorie.controls['libelle'].touched&& submitted)" class="alert alert-danger">
+              <div *ngIf="formCategorie.controls['libelle'].errors && submitted">
+                Le libelle doit comporter au moins 4 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" formControlName="description"placeholder="description">
+            <div *ngIf="formCategorie.controls['description'].invalid && (formCategorie.controls['description'].dirty&& submitted || formCategorie.controls['description'].touched&& submitted)" class="alert alert-danger">
+              <div *ngIf="formCategorie.controls['description'].errors && submitted">
+                La description doit comporter au moins 6 caractères.
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-3">
+            <button type="submit" class="btn "(click)="addCategorie()">add categorie</button>
+          </div>
+        </form>
+      </div>
+
+  </div>
+ </div>
+  </div>
+</div>
+
+<!-- content-wrapper ends -->
